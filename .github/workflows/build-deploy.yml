@@ -43,7 +43,9 @@ jobs:
             bridgetown-content-cache-
 
       - name: Build site
-        run: bundle exec bridgetown build --production
+        run: bundle exec bridgetown build
+        env:
+          BRIDGETOWN_ENV: production
 
       - uses: aws-actions/configure-aws-credentials@v4
         with:
