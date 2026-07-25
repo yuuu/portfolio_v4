@@ -7,4 +7,24 @@
     <span class="uppercase tracking-wide"><%= @item.data.source %></span>
     <time><%= @item.data.published_at.strftime("%Y-%m-%d") %></time>
   </div>
+  <% if @item.data.likes_count.to_i.positive? || @item.data.hatena_bookmark_count.to_i.positive? %>
+    <div class="mt-2 flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
+      <% if @item.data.likes_count.to_i.positive? %>
+        <span class="flex items-center gap-1" title="いいね/LGTM">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="h-3.5 w-3.5" fill="currentColor">
+            <path d="M3.172 5.172a4 4 0 0 1 5.656 0L10 6.343l1.172-1.171a4 4 0 1 1 5.656 5.656L10 17.657l-6.828-6.829a4 4 0 0 1 0-5.656Z" />
+          </svg>
+          <%= @item.data.likes_count %>
+        </span>
+      <% end %>
+      <% if @item.data.hatena_bookmark_count.to_i.positive? %>
+        <span class="flex items-center gap-1" title="はてなブックマーク">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="currentColor">
+            <path fill-rule="evenodd" d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z" clip-rule="evenodd" />
+          </svg>
+          <%= @item.data.hatena_bookmark_count %>
+        </span>
+      <% end %>
+    </div>
+  <% end %>
 </a>

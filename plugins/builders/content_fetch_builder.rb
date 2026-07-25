@@ -43,6 +43,8 @@ class Builders::ContentFetchBuilder < SiteBuilder
         published_at item[:published_at]
         categories item[:categories] || []
         source item[:source]
+        likes_count item[:likes_count]
+        hatena_bookmark_count item[:hatena_bookmark_count]
         content item[:body]
       end
     end

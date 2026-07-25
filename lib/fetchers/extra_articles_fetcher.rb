@@ -35,6 +35,7 @@ module Fetchers
         published_at: parse_published_at(doc),
         image_url: doc.at('meta[property="og:image"]')&.attr("content"),
         source: source_label(url),
+        hatena_bookmark_count: fetch_hatena_bookmark_count(url),
       }
     end
 

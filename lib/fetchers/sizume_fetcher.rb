@@ -24,6 +24,7 @@ module Fetchers
         published_at: item.date,
         image_url: item.enclosure&.url,
         source: "sizu.me",
+        hatena_bookmark_count: fetch_hatena_bookmark_count(item.link),
       }
     end
   end

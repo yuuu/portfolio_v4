@@ -37,6 +37,7 @@ module Fetchers
         published_at: entry.published.content,
         image_url: scrape_og_image(entry.link.href),
         source: "speakerdeck",
+        hatena_bookmark_count: fetch_hatena_bookmark_count(entry.link.href),
       }
     end
   end

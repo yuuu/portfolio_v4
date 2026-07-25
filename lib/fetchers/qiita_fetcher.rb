@@ -20,6 +20,8 @@ module Fetchers
         published_at: Time.parse(raw["created_at"]),
         image_url: scrape_og_image(raw["url"]),
         source: "qiita",
+        likes_count: raw["likes_count"],
+        hatena_bookmark_count: fetch_hatena_bookmark_count(raw["url"]),
       }
     end
   end

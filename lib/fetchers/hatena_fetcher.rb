@@ -37,6 +37,7 @@ module Fetchers
         image_url: scrape_og_image(item.link.href),
         source: "hatena",
         categories: item.categories.map { |c| c.term },
+        hatena_bookmark_count: fetch_hatena_bookmark_count(item.link.href),
       }
     end
   end
