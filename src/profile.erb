@@ -54,6 +54,18 @@ title: Profile
 <div class="mt-10 grid gap-8 md:grid-cols-[20rem_1fr]">
   <div class="hidden md:block"></div>
   <div>
+    <h3 class="mb-4 text-xl font-semibold">Certifications</h3>
+    <ul class="flex flex-wrap gap-2">
+      <% site.data.profile.certifications.each do |cert| %>
+        <li class="rounded-full border border-gray-300 px-3 py-1 text-sm text-gray-700 dark:border-gray-600 dark:text-gray-300"><%= cert %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="mt-10 grid gap-8 md:grid-cols-[20rem_1fr]">
+  <div class="hidden md:block"></div>
+  <div>
     <h3 class="mb-4 text-xl font-semibold">History</h3>
     <ul class="space-y-4 border-l-2 border-gray-200 pl-4 dark:border-gray-700">
       <% site.data.profile.history.each do |item| %>

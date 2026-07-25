@@ -11,6 +11,11 @@ resource "aws_iam_openid_connect_provider" "github_actions" {
   thumbprint_list = ["6938fd4d98bab03faadb97b34396831e3780aea1"]
 }
 
+locals {
+  github_repository_owner = split("/", var.github_repository)[0]
+  github_repository_name  = split("/", var.github_repository)[1]
+}
+
 data "aws_iam_policy_document" "github_actions_assume_role" {
   statement {
     effect  = "Allow"
@@ -27,11 +32,23 @@ data "aws_iam_policy_document" "github_actions_assume_role" {
       values   = ["sts.amazonaws.com"]
     }
 
-    # Restricts to workflow runs triggered from this repository (any branch/ref).
+    # Belt-and-suspenders repository check (readable, but on its own not
+    # accepted by AWS - see the `sub` condition below).
+    condition {
+      test     = "StringEquals"
+      variable = "token.actions.githubusercontent.com:repository"
+      values   = [var.github_repository]
+    }
+
+    # AWS requires the trust policy to scope on `sub` (or `job_workflow_ref`)
+    # directly; a condition on `repository` alone is rejected as "not scoped
+    # to all". GitHub's `sub` claim now embeds numeric actor/repo IDs
+    # (repo:owner@actor_id/repo@repo_id:ref:refs/heads/main) rather than the
+    # plain "owner/repo:*" form, hence the wildcards around each ID.
     condition {
       test     = "StringLike"
       variable = "token.actions.githubusercontent.com:sub"
-      values   = ["repo:${var.github_repository}:*"]
+      values   = ["repo:${local.github_repository_owner}@*/${local.github_repository_name}@*:*"]
     }
   }
 }

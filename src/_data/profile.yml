@@ -7,7 +7,6 @@ introduction: |
   Railsを使った開発や、IoTに興味がある方はぜひお声掛けを！
 residence: 福岡県
 birthplace: 山口県
-birthday: "1989-07-27"
 hobby: ルービックキューブ, スプラトゥーン, ボウリング
 social:
   github: https://github.com/yuuu
@@ -15,6 +14,14 @@ social:
   facebook: https://www.facebook.com/yuhei.okazaki/
   mixi2: https://mixi.social/@yuuu24
   bluesky: https://bsky.app/profile/y-uuu.net
+certifications:
+  - SORACOM IoT Engineer Basic for SPS
+  - データベーススペシャリスト（IPA）
+  - エンベデッドシステムスペシャリスト（IPA）
+  - ネットワークスペシャリスト（IPA）
+  - AWS Certified Solutions Architect - Professional
+  - AWS Certified DevOps Engineer - Professional
+  - AWS Certified Advanced Networking - Specialty
 history:
   - date_label: 1989年7月27日
     text: 誕生
