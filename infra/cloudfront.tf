@@ -5,6 +5,16 @@ resource "aws_cloudfront_origin_access_control" "site" {
   signing_protocol                  = "sigv4"
 }
 
+# default_root_object only applies to the bare "/" path, not subdirectories,
+# so /profile/ etc. would 403 against the S3 origin without this rewrite.
+resource "aws_cloudfront_function" "rewrite_index" {
+  name    = "portfolio-v4-rewrite-index-${var.environment}"
+  runtime = "cloudfront-js-2.0"
+  comment = "Append /index.html for directory-style URIs"
+  publish = true
+  code    = file("${path.module}/cloudfront-functions/rewrite-index.js")
+}
+
 resource "aws_cloudfront_distribution" "site" {
   enabled             = true
   is_ipv6_enabled     = true
@@ -12,8 +22,8 @@ resource "aws_cloudfront_distribution" "site" {
   # Left unset until cutover: the legacy Amplify distribution still owns
   # domain_name as a CNAME, and CloudFront rejects assigning the same
   # alternate domain name to two distributions at once.
-  aliases = var.enable_custom_domain ? [var.domain_name] : []
-  price_class         = "PriceClass_200"
+  aliases     = var.enable_custom_domain ? [var.domain_name, "www.${var.domain_name}"] : []
+  price_class = "PriceClass_200"
 
   origin {
     domain_name              = aws_s3_bucket.site.bucket_regional_domain_name
@@ -28,10 +38,22 @@ resource "aws_cloudfront_distribution" "site" {
     viewer_protocol_policy = "redirect-to-https"
     compress               = true
     cache_policy_id        = data.aws_cloudfront_cache_policy.caching_optimized.id
+
+    function_association {
+      event_type   = "viewer-request"
+      function_arn = aws_cloudfront_function.rewrite_index.arn
+    }
   }
 
   custom_error_response {
     error_code         = 404
+    response_code      = 404
+    response_page_path = "/404.html"
+  }
+
+  # S3 (via OAC) returns 403 rather than 404 for missing keys.
+  custom_error_response {
+    error_code         = 403
     response_code      = 404
     response_page_path = "/404.html"
   }
