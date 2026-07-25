@@ -4,6 +4,7 @@ require_relative "../../lib/fetchers/speaker_deck_fetcher"
 require_relative "../../lib/fetchers/fusic_fetcher"
 require_relative "../../lib/fetchers/hatena_fetcher"
 require_relative "../../lib/fetchers/extra_articles_fetcher"
+require_relative "../../lib/fetchers/sizume_fetcher"
 
 # Populates the `articles` and `slides` collections at build time from
 # external RSS/API sources, replacing the old DynamoDB-backed pipeline.
@@ -14,6 +15,7 @@ class Builders::ContentFetchBuilder < SiteBuilder
     Fetchers::FusicFetcher,
     Fetchers::HatenaFetcher,
     Fetchers::ExtraArticlesFetcher,
+    Fetchers::SizumeFetcher,
   ].freeze
 
   SLIDE_SOURCES = [
