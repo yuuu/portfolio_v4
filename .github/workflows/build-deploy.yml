@@ -42,6 +42,12 @@ jobs:
           restore-keys: |
             bridgetown-content-cache-
 
+      # `bridgetown build` only generates HTML from src/ - it does not run
+      # esbuild, so CSS/JS must be built explicitly first or asset_path()
+      # emits an unresolved "MISSING_ESBUILD_ASSET" placeholder.
+      - name: Build frontend assets
+        run: bin/bridgetown frontend:build
+
       - name: Build site
         run: bundle exec bridgetown build
         env:
