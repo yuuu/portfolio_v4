@@ -1,0 +1,19 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light dark" />
+<% resource_title = strip_html(strip_newlines(title)) %>
+<title><% if resource_title != "Index" %><%= resource_title %> | <%= metadata.title %><% else %><%= metadata.title %>: <%= metadata.tagline %><% end %></title>
+
+<meta name="description" content="<%= metadata.description %>" />
+
+<link rel="icon" href="<%= relative_url '/favicon.ico' %>" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="<%= asset_path :css %>" />
+<script src="<%= asset_path :js %>" defer></script>
+<%= live_reload_dev_js %>
+<%= seo %>
+<%= feed_meta %>

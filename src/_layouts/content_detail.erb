@@ -1,0 +1,18 @@
+---
+layout: default
+---
+
+<article class="mx-auto max-w-2xl">
+  <h1 class="mb-2 text-2xl font-bold"><%= resource.data.title %></h1>
+  <div class="mb-6 flex items-center gap-3 text-sm text-gray-500 dark:text-gray-400">
+    <span class="uppercase tracking-wide"><%= resource.data.source %></span>
+    <time><%= resource.data.published_at.strftime("%Y-%m-%d") %></time>
+  </div>
+  <% if resource.data.image %>
+    <img src="<%= resource.data.image %>" alt="<%= resource.data.title %>" class="mb-6 w-full rounded-lg object-cover" />
+  <% end %>
+  <p class="whitespace-pre-line text-gray-700 dark:text-gray-300"><%= yield %></p>
+  <a href="<%= resource.data.link %>" target="_blank" rel="noopener noreferrer" class="mt-8 inline-block font-medium">
+    Read the full article &rarr;
+  </a>
+</article>

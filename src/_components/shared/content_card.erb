@@ -1,0 +1,10 @@
+<a href="<%= @item.data.link %>" target="_blank" rel="noopener noreferrer" class="card block no-underline">
+  <% if @item.data.image %>
+    <img src="<%= @item.data.image %>" alt="<%= @item.data.title %>" class="mb-3 h-40 w-full rounded-lg object-cover" loading="lazy" decoding="async" />
+  <% end %>
+  <p class="line-clamp-2 font-medium text-gray-900 dark:text-gray-100"><%= @item.data.title %></p>
+  <div class="mt-2 flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
+    <span class="uppercase tracking-wide"><%= @item.data.source %></span>
+    <time><%= @item.data.published_at.strftime("%Y-%m-%d") %></time>
+  </div>
+</a>

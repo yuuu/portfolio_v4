@@ -1,0 +1,10 @@
+---
+layout: page
+title: Slides
+---
+
+<div class="grid gap-4 sm:grid-cols-2">
+  <% site.collections.slides.resources.each do |slide| %>
+    <%= render Shared::ContentCard.new(item: slide) %>
+  <% end %>
+</div>

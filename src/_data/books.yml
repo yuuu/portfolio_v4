@@ -1,0 +1,32 @@
+# Source: https://techbookfest.org/organization/5632217170575360 (yuuu's circle)
+# and blog announcements on ylgbk.hatenablog.com. techbookfest.org loads its
+# catalog via a client-side API with no static/RSS endpoint, so this list was
+# assembled by hand and should be reviewed when new books are released.
+- title: AWSとM5Stackで作るIoT開発入門
+  description: 技術書典20 (2026年4月) 頒布。ATOMS3 LiteやM5Stack CoreS3、ENV-IIIユニットなど身近なデバイスを使い、設計・実装・テストの流れを通してIoT開発を学べる一冊です。
+  link: https://techbookfest.org/product/h4dy5Xf0PZerSfmzCciMPC
+  image: /images/books/aws-m5stack-iot.jpg
+- title: MQTTクライアントを作りながら学ぶソケットプログラミング入門
+  description: 技術書典18 頒布。MQTTクライアントを自作しながら、その裏側で動いているソケットプログラミングの基礎を学べる一冊です。
+  link: https://techbookfest.org/product/kMchpLRTUdmaSQWCSaYZiw
+  image: /images/books/mqtt-socket-programming.jpg
+- title: 生活をちょっと便利にするIoTボタンのつくりかた
+  description: 技術書典16 (2024年5月) 頒布。M5Stamp C3 Mateで作るIoTボタンをきっかけに、LINE通知やSwitchBot連携でクラウド上の処理を実行する方法を紹介する一冊です。
+  link: https://techbookfest.org/product/rwkYYevZRmhdfFGBksTeMk
+  image: /images/books/iot-button.jpg
+- title: AWSとRubyではじめるサーバーレス入門
+  description: 技術書典15 頒布。AWSとRubyを使ったサーバーレスアプリケーション構築の入門書です。
+  link: https://techbookfest.org/product/srni2eQTAKXY59aVTFRSag
+  image: /images/books/aws-ruby-serverless.jpg
+- title: AWS Amplifyで作るIoTバックエンド
+  description: AWS Amplifyを使ったIoTバックエンドの構築方法を解説する一冊です。
+  link: https://techbookfest.org/product/ph4YMFR31tnMxEnWrba0Wd
+  image: /images/books/aws-amplify-iot-backend.jpg
+- title: 作って学ぶSORACOM入門
+  description: 技術書典10 (2020年12月) 頒布。SORACOMを使ったIoTシステムを実際に作りながら学べる一冊です。
+  link: https://techbookfest.org/product/5273269798174720
+  image: /images/books/build-and-learn-soracom.jpg
+- title: AWSとM5StickCで作るIoT開発入門
+  description: 技術書典9 (2020年9月) 頒布。M5StickCとAWSを使ったIoT開発の入門書です。
+  link: https://techbookfest.org/product/5189029702139904
+  image: /images/books/aws-m5stickc-iot.jpg

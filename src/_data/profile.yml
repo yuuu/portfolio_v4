@@ -1,0 +1,53 @@
+# Source: portfolio.y-uuu.net/profile (Amplify DataStore export, 2026-07-25)
+name_ja: 岡嵜 雄平
+name_en: Okazaki Yuhei
+image: /images/profile.png
+introduction: |
+  2018年から福岡でWeb/IoTエンジニアしてます。2017年まで関西で組込みエンジニアしてました。
+  Railsを使った開発や、IoTに興味がある方はぜひお声掛けを！
+residence: 福岡県
+birthplace: 山口県
+birthday: "1989-07-27"
+hobby: ルービックキューブ, スプラトゥーン, ボウリング
+social:
+  github: https://github.com/yuuu
+  x: https://twitter.com/Y_uuu
+  facebook: https://www.facebook.com/yuhei.okazaki/
+  mixi2: https://mixi.social/@yuuu24
+  bluesky: https://bsky.app/profile/y-uuu.net
+history:
+  - date_label: 1989年7月27日
+    text: 誕生
+  - date_label: 2010年3月
+    text: 徳山工業高等専門学校 機械電気工学科卒業
+  - date_label: 2010年4月
+    text: 兵庫県にて組込みエンジニアとして働き始める
+  - date_label: 2012年11月
+    text: ETロボコン2012 競技部門にて1位を獲得
+    link: https://www.etrobo.jp/2012archive/
+  - date_label: 2018年1月
+    text: 福岡県にてIoTクラウドエンジニアとして働き始める
+  - date_label: 2019年4月
+    text: RubyKaigi 2019にLocal Organizerとして参加
+    link: https://rubykaigi.org/2019/
+  - date_label: 2021年4月
+    text: フィヨルドブートキャンプのメンター業務開始
+    link: https://bootcamp.fjord.jp/welcome
+  - date_label: 2023年4月
+    text: 2023 Japan AWS Top Engineersに選出される
+    link: https://aws.amazon.com/jp/blogs/psa/2023-japan-aws-top-engineers/
+  - date_label: 2023年11月
+    text: JAWS FESTA 2023 in Kyushuに登壇
+    link: https://jft2023.jaws-ug.jp/session/kyushu_04/
+  - date_label: 2024年6月
+    text: 2024 Japan AWS Top Engineersに選出される
+    link: https://aws.amazon.com/jp/blogs/psa/2024-japan-aws-top-engineers/
+  - date_label: 2025年4月
+    text: RubyKaigi 2025に登壇
+    link: https://rubykaigi.org/2025/presentations/Y_uuu.html
+  - date_label: 2025年6月
+    text: 2025 Japan AWS Top Engineersに選出される
+    link: https://aws.amazon.com/jp/blogs/psa/2025-japan-aws-top-engineers/
+  - date_label: 2026年4月
+    text: RubyKaigi 2026に登壇
+    link: https://rubykaigi.org/2026/presentations/Y_uuu.html

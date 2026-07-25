@@ -1,0 +1,38 @@
+---
+layout: default
+title: Home
+---
+
+<section class="flex flex-col items-center justify-center gap-8 py-8 md:flex-row">
+  <div class="text-center md:text-left">
+    <h1 class="border-b-2 border-gray-200 py-4 text-4xl leading-tight text-gray-900 dark:border-gray-700 dark:text-gray-100 sm:text-6xl">
+      Welcome to yuuu's portfolio.
+    </h1>
+    <span class="mb-8 mt-4 block text-2xl text-gray-700 dark:text-gray-300">
+      Check out my profile!
+    </span>
+    <div class="flex justify-center md:justify-start">
+      <a href="<%= relative_url '/profile/' %>" class="group inline-flex items-center gap-1.5 rounded-full border border-gray-300 px-5 py-2 text-sm font-medium text-gray-700 no-underline transition-colors hover:border-accent hover:text-accent dark:border-gray-600 dark:text-gray-300 dark:hover:border-accent dark:hover:text-accent">
+        Profile
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" fill="currentColor">
+          <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+  </div>
+  <div>
+    <img src="<%= relative_url '/images/logo.png' %>" alt="yuuu's portfolio" width="720" height="718" class="h-auto w-56 md:w-72" />
+  </div>
+</section>
+
+<% latest = (site.collections.articles&.resources.to_a + site.collections.slides&.resources.to_a).sort_by { |r| r.data.published_at }.reverse.first(3) %>
+<% if latest.any? %>
+  <section class="pb-12">
+    <h2 class="mb-4 text-xl font-semibold">Latest</h2>
+    <div class="grid gap-4 sm:grid-cols-3">
+      <% latest.each do |item| %>
+        <%= render Shared::ContentCard.new(item:) %>
+      <% end %>
+    </div>
+  </section>
+<% end %>

@@ -1,0 +1,15 @@
+name: Scheduled Content Rebuild
+
+# Replaces the legacy portfolio-v3-fetcher's EventBridge cron (0 23 * * ? *,
+# JST 08:00): rebuilding the site is now how new Zenn/Qiita/SpeakerDeck/
+# Fusic/Hatena content gets picked up, since there's no separate DynamoDB
+# ingestion pipeline anymore.
+on:
+  schedule:
+    - cron: "0 23 * * *"
+  workflow_dispatch: {}
+
+jobs:
+  rebuild:
+    uses: ./.github/workflows/build-deploy.yml
+    secrets: inherit

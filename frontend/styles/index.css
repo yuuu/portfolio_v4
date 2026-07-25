@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme {
+  --color-accent: #ff2a63;
+  --color-accent-dark: #880e27;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", monospace;
+}
+
+@layer base {
+  /* Matches the footer's background so mobile browsers' overscroll/bounce
+     doesn't flash a mismatched color past the bottom of the page. */
+  html {
+    @apply bg-gray-800;
+  }
+
+  body {
+    @apply bg-gray-50 text-gray-900 font-sans antialiased;
+    @apply dark:bg-gray-900 dark:text-gray-100;
+  }
+
+  a {
+    @apply hover:underline;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md;
+    @apply dark:border-gray-700 dark:bg-gray-800;
+  }
+
+  .container-page {
+    @apply mx-auto max-w-4xl px-4 md:px-8;
+  }
+}

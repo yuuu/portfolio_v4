@@ -1,0 +1,23 @@
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.metadata.title }}, {{ site.metadata.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.metadata.myvariable }}.
+
+title: yuuu's portfolio
+tagline: Software engineer's portfolio site
+description: >-
+  yuuu's portfolio site. Profile, OSS, books, articles and slides.
+url: "https://portfolio.y-uuu.net"
+image: /images/og_image.png
+nav:
+  - title: Profile
+    path: /profile/
+  - title: OSS
+    path: /oss/
+  - title: Books
+    path: /books/
+  - title: Articles
+    path: /articles/
+  - title: Slides
+    path: /slides/
