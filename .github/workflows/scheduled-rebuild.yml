@@ -11,5 +11,8 @@ on:
 
 jobs:
   rebuild:
+    permissions:
+      id-token: write
+      contents: read
     uses: ./.github/workflows/build-deploy.yml
     secrets: inherit
