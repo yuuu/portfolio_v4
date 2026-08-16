@@ -66,15 +66,10 @@ module Fetchers
       nil
     end
 
-    # Hatena Bookmark's public jsonlite endpoint returns the bookmarking
-    # user count for any URL, regardless of source site. Cached per URL like
-    # scrape_og_image, since it's requested for every article/slide.
     def fetch_hatena_bookmark_count(url)
-      @cache.getset("hatena_bookmark_count:#{url}") do
-        res = http.get("https://b.hatena.ne.jp/entry/jsonlite/?url=#{CGI.escape(url)}")
-        data = JSON.parse(res.body)
-        data.is_a?(Hash) ? data["count"].to_i : 0
-      end
+      res = http.get("https://b.hatena.ne.jp/entry/jsonlite/?url=#{CGI.escape(url)}")
+      data = JSON.parse(res.body)
+      data.is_a?(Hash) ? data["count"].to_i : 0
     rescue Faraday::Error, JSON::ParserError => e
       @logger.warn("Fetchers::HatenaBookmark", "failed to fetch count for #{url}: #{e.message}")
       0
