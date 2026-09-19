@@ -44,7 +44,7 @@ gem "bridgetown-feed", "~> 4.0"
 
 # Used by lib/fetchers to pull in Zenn/Qiita/SpeakerDeck/Fusic/Hatena content at build time
 gem "bridgetown-builder", "~> 2.2"
-gem "faraday", "~> 2.0"
+gem "faraday", "~> 2.14"
 gem "faraday-retry", "~> 2.0"
 gem "sanitize", "~> 7.0"
 gem "rss", "~> 0.3"
