@@ -36,7 +36,7 @@ gem "bridgetown", "~> 2.2.2"
 gem "falcon"
 
 
-gem "nokogiri", "~> 1.18"
+gem "nokogiri", "~> 1.19"
 
 gem "bridgetown-seo-tag", "~> 7.0"
 
