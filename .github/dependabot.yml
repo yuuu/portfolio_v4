@@ -1,14 +1,31 @@
 version: 2
 updates:
+  # Minor/patch updates are grouped into one PR per ecosystem so they can be
+  # verified (and deployed, since main deploys on push) together. Major
+  # updates still get their own PR.
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "weekly"
+    groups:
+      npm-minor-patch:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
 
   - package-ecosystem: "bundler"
     directory: "/"
     schedule:
       interval: "weekly"
+    groups:
+      bundler-minor-patch:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
 
   - package-ecosystem: "github-actions"
     directory: "/"

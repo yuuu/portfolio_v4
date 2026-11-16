@@ -1,0 +1,77 @@
+name: PR Build
+
+# Build-only check for pull requests (including Dependabot PRs).
+# Mirrors the build steps of build-deploy.yml but never deploys:
+# no AWS credentials, no secrets, read-only token.
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-build-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ".ruby-version"
+          bundler-cache: true
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: ".node-version"
+          cache: "npm"
+
+      - run: npm ci
+
+      # Reuse the content cache written by build-deploy.yml on main to avoid
+      # re-scraping every article. Restore only: PR runs never save it.
+      - uses: actions/cache/restore@v6
+        with:
+          path: .bridgetown-cache
+          key: bridgetown-content-cache-${{ github.run_id }}
+          restore-keys: |
+            bridgetown-content-cache-
+
+      - name: Build frontend assets
+        run: bin/bridgetown frontend:build
+
+      - name: Build site
+        run: bundle exec bridgetown build
+        env:
+          BRIDGETOWN_ENV: production
+
+      - name: Check output
+        run: |
+          test -f output/index.html
+          if grep -rl "MISSING_ESBUILD_ASSET" output/; then
+            echo "::error::esbuild assets were not resolved in the generated HTML"
+            exit 1
+          fi
+
+  terraform-validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: infra
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: hashicorp/setup-terraform@v4
+        with:
+          terraform_wrapper: false
+
+      - run: terraform fmt -check -recursive
+
+      # -backend=false: no state access, so no AWS credentials are needed.
+      - run: terraform init -backend=false -input=false
+
+      - run: terraform validate
